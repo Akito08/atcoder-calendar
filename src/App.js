@@ -86,6 +86,20 @@ function Form({ setEventList }) {
 }
 
 function EventList({ eventList }) {
+  async function createCalenderEvent() {
+    console.log("createCalenderEventしてますすすす");
+    const event = {
+      summary: "Hikakin Partyです！！！",
+      start: {
+        dateTime: "2023-11-25T21:00:000+0900",
+        timeZone: "Asia/Tokyo",
+      },
+      end: {
+        dateTime: "2023-11-25T23:00:000+0900",
+        timeZone: "Asia/Tokyo",
+      },
+    };
+  }
   return (
     <div className="list">
       <ul>
@@ -93,7 +107,9 @@ function EventList({ eventList }) {
           <Event key={event.name} event={event} />
         ))}
       </ul>
-      <button>Google Calendarに予定を追加</button>
+      <button onClick={() => createCalenderEvent()}>
+        Google Calendarに予定を追加
+      </button>
     </div>
   );
 }
