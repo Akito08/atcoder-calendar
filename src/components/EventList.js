@@ -1,9 +1,6 @@
-import { useSession } from "@supabase/auth-helpers-react";
 import Event from "./Event";
 
-export default function EventList({ eventList, setEventList }) {
-  const session = useSession();
-
+export default function EventList({ eventList, setEventList, session }) {
   function handleToggleEvent(id) {
     setEventList((eventList) =>
       eventList.map((event) =>
@@ -13,35 +10,37 @@ export default function EventList({ eventList, setEventList }) {
   }
 
   async function createCalenderEvent() {
-    console.log("createCalenderEventしてますすすす");
-    const event = {
-      summary: "Hikakin Party",
-      start: {
-        dateTime: "2023-11-29T21:00:00+09:00",
-        timeZone: "Asia/Tokyo",
-      },
-      end: {
-        dateTime: "2023-11-29T23:50:00+09:00",
-        timeZone: "Asia/Tokyo",
-      },
-    };
-    await fetch(
-      "https://www.googleapis.com/calendar/v3/calendars/primary/events",
-      {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + session.provider_token,
+    const checkedEvents = eventList.filter((event) => event.checked);
+    for (const event of checkedEvents) {
+      const addEvent = {
+        summary: event.contest_name,
+        start: {
+          dateTime: event.contest_start_time,
+          timeZone: "Asia/Tokyo",
         },
-        body: JSON.stringify(event),
-      }
-    )
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        console.log(data);
-        alert("Event created, check your Google Calendar!");
-      });
+        end: {
+          dateTime: event.contest_end_time,
+          timeZone: "Asia/Tokyo",
+        },
+      };
+      console.log(addEvent);
+      await fetch(
+        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + session.provider_token,
+          },
+          body: JSON.stringify(addEvent),
+        }
+      )
+        .then((data) => {
+          return data.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
   }
 
   return (

@@ -32,7 +32,11 @@ export default function App() {
           <>
             <Logo />
             <Search setEventList={setEventList} />
-            <EventList eventList={eventList} setEventList={setEventList} />
+            <EventList
+              eventList={eventList}
+              setEventList={setEventList}
+              session={session}
+            />
             <Footer googleSignOut={googleSignOut} />
           </>
         ) : (
