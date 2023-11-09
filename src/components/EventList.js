@@ -54,7 +54,10 @@ export default function EventList({ eventList, setEventList, session }) {
           />
         ))}
       </ul>
-      <button onClick={() => createCalenderEvent()}>
+      <button
+        className="add-calendar-button"
+        onClick={() => createCalenderEvent()}
+      >
         Google Calendarに予定を追加
       </button>
     </div>
