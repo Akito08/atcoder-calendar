@@ -1,4 +1,4 @@
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSession } from "@supabase/auth-helpers-react";
 import Event from "./Event";
 
 export default function EventList({ eventList, setEventList }) {
