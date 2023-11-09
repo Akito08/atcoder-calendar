@@ -29,7 +29,7 @@ export default function App() {
           <>
             <Logo />
             <Form setEventList={setEventList} />
-            <EventList eventList={eventList} />
+            <EventList eventList={eventList} setEventList={setEventList} />
             <Footer googleSignOut={googleSignOut} />
           </>
         ) : (
@@ -88,8 +88,16 @@ function Form({ setEventList }) {
   );
 }
 
-function EventList({ eventList }) {
+function EventList({ eventList, setEventList }) {
   const session = useSession();
+
+  function handleToggleEvent(id) {
+    setEventList((eventList) =>
+      eventList.map((event) =>
+        event.id === id ? { ...event, checked: !event.checked } : event
+      )
+    );
+  }
 
   async function createCalenderEvent() {
     console.log("createCalenderEventしてますすすす");
@@ -127,7 +135,11 @@ function EventList({ eventList }) {
     <div className="list">
       <ul>
         {eventList.map((event) => (
-          <Event key={event.name} event={event} />
+          <Event
+            key={event.id}
+            event={event}
+            onToggleEvent={handleToggleEvent}
+          />
         ))}
       </ul>
       <button onClick={() => createCalenderEvent()}>
@@ -136,10 +148,14 @@ function EventList({ eventList }) {
     </div>
   );
 }
-function Event({ event }) {
+function Event({ event, onToggleEvent }) {
   return (
     <li>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        value={event.checked}
+        onChange={() => onToggleEvent(event.id)}
+      />
       <span> {event.contest_name}</span>
     </li>
   );
