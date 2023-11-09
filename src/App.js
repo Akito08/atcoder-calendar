@@ -86,20 +86,40 @@ function Form({ setEventList }) {
 }
 
 function EventList({ eventList }) {
+  const session = useSession();
+
   async function createCalenderEvent() {
     console.log("createCalenderEventしてますすすす");
     const event = {
       summary: "Hikakin Partyです！！！",
       start: {
-        dateTime: "2023-11-25T21:00:000+0900",
+        dateTime: "2023-11-25T21:00:00+09:00",
         timeZone: "Asia/Tokyo",
       },
       end: {
-        dateTime: "2023-11-25T23:00:000+0900",
+        dateTime: "2023-11-25T23:00:00+09:00",
         timeZone: "Asia/Tokyo",
       },
     };
+    await fetch(
+      "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + session.provider_token,
+        },
+        body: JSON.stringify(event),
+      }
+    )
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert("Event created, check your Google Calendar!");
+      });
   }
+
   return (
     <div className="list">
       <ul>
