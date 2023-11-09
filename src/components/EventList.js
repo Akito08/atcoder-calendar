@@ -23,7 +23,7 @@ export default function EventList({ eventList, setEventList, session }) {
           timeZone: "Asia/Tokyo",
         },
       };
-      console.log(addEvent);
+
       await fetch(
         "https://www.googleapis.com/calendar/v3/calendars/primary/events",
         {
