@@ -14,9 +14,7 @@ const supabase = createClient(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <SesstionContextProvider supabaseClient={supabase}>
-      <App />
-    </SesstionContextProvider>
+    <App />
   </React.StrictMode>
 );
 
