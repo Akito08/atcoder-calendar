@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Logo from "./Logo";
-import Form from "./Form";
+import Search from "./Search";
 import EventList from "./EventList";
 import Footer from "./Footer";
 
@@ -31,7 +31,7 @@ export default function App() {
         {session ? (
           <>
             <Logo />
-            <Form setEventList={setEventList} />
+            <Search setEventList={setEventList} />
             <EventList eventList={eventList} setEventList={setEventList} />
             <Footer googleSignOut={googleSignOut} />
           </>

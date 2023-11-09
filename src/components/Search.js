@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Form({ setEventList }) {
+export default function Search({ setEventList }) {
   const baseUrl =
     "https://sdvq6s9zic.execute-api.ap-northeast-1.amazonaws.com/test/events";
   const today = new Date();
