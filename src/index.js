@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createClient } from "@supabase/supabase-js";
-import { SesstionContextProvider } from "@supabase/auth-helpers-react";
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
 const supabase = createClient(
   "https://pypqnlxfcqnbbacisnga.supabase.co",
@@ -13,8 +13,8 @@ const supabase = createClient(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <SesstionContextProvider supabaseClient={supabase}>
+    <SessionContextProvider supabaseClient={supabase}>
       <App />
-    </SesstionContextProvider>
+    </SessionContextProvider>
   </React.StrictMode>
 );
