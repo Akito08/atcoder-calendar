@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function Search({ setEventList }) {
-  const baseUrl =
-    "https://sdvq6s9zic.execute-api.ap-northeast-1.amazonaws.com/test/events";
+  const baseUrl = process.env.REACT_APP_API_ENDPOINT;
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth() + 1);
