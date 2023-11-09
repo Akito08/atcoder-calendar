@@ -56,8 +56,11 @@ function Form({ setEventList }) {
     axios
       .get(`${baseUrl}?contest_year_month=${year}-${month}`)
       .then((res) => {
-        console.log("RESPONSE", res);
-        setEventList(res.data);
+        const eventsWithId = res.data.map((event, index) => ({
+          ...event,
+          id: index,
+        }));
+        setEventList(eventsWithId);
       })
       .catch((error) => {
         console.error("ERROR", error);
@@ -91,13 +94,13 @@ function EventList({ eventList }) {
   async function createCalenderEvent() {
     console.log("createCalenderEventしてますすすす");
     const event = {
-      summary: "Hikakin Partyです！！！",
+      summary: "Hikakin Party",
       start: {
-        dateTime: "2023-11-25T21:00:00+09:00",
+        dateTime: "2023-11-29T21:00:00+09:00",
         timeZone: "Asia/Tokyo",
       },
       end: {
-        dateTime: "2023-11-25T23:00:00+09:00",
+        dateTime: "2023-11-29T23:50:00+09:00",
         timeZone: "Asia/Tokyo",
       },
     };
