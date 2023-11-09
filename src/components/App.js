@@ -37,7 +37,7 @@ export default function App() {
               setEventList={setEventList}
               session={session}
             />
-            <Footer googleSignOut={googleSignOut} />
+            <Footer />
           </>
         ) : (
           <button onClick={googleSignIn}>Sign In With Google</button>
