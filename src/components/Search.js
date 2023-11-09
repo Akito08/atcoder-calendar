@@ -25,7 +25,7 @@ export default function Search({ setEventList }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="search" onSubmit={handleSubmit}>
       <select value={year} onChange={(e) => setYear(e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => 2020 + i).map((eachYear) => (
           <option value={eachYear} key={eachYear}>
