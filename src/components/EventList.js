@@ -38,6 +38,7 @@ export default function EventList({ eventList, setEventList, session }) {
         })
         .then((data) => {
           console.log(data);
+          alert("Google Calendarに選択された予定が追加されました");
         });
     }
   }

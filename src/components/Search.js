@@ -19,9 +19,9 @@ export default function Search({ setEventList }) {
     axios
       .get(`${baseUrl}?contest_year_month=${year}-${month}`)
       .then((res) => {
-        const eventsWithId = res.data.map((event, index) => ({
+        const eventsWithId = res.data.map((event) => ({
           ...event,
-          id: index,
+          id: `${event.contest_name}-${event.contest_start_time}`,
         }));
         if (eventsWithId.length === 0) {
           return alert(
