@@ -30,12 +30,13 @@ export default function App() {
       <div>
         {session ? (
           <>
-            <Logo googleSignOut={googleSignOut} />
+            <Logo />
             <Search setEventList={setEventList} />
             <EventList
               eventList={eventList}
               setEventList={setEventList}
               session={session}
+              googleSignOut={googleSignOut}
             />
             <Footer />
           </>

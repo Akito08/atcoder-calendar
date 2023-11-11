@@ -1,6 +1,11 @@
 import Event from "./Event";
 
-export default function EventList({ eventList, setEventList, session }) {
+export default function EventList({
+  eventList,
+  setEventList,
+  session,
+  googleSignOut,
+}) {
   function handleToggleEvent(id) {
     setEventList((eventList) =>
       eventList.map((event) =>
@@ -59,6 +64,9 @@ export default function EventList({ eventList, setEventList, session }) {
         onClick={() => createCalenderEvent()}
       >
         Google Calendarに予定を追加
+      </button>
+      <button className="sign-out-button" onClick={() => googleSignOut()}>
+        Sign Out
       </button>
     </div>
   );
