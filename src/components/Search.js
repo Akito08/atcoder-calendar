@@ -17,6 +17,12 @@ export default function Search({ setEventList }) {
           ...event,
           id: index,
         }));
+        if (eventsWithId.length === 0) {
+          alert(
+            `AtCoderの公式サイトで、${year}年${month}月のコンテストの予定はまだ追加されていません。`
+          );
+          return;
+        }
         setEventList(eventsWithId);
       })
       .catch((error) => {
