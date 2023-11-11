@@ -3,12 +3,18 @@ import axios from "axios";
 
 export default function Search({ setEventList }) {
   const baseUrl = process.env.REACT_APP_API_ENDPOINT;
-  const today = new Date();
-  const [year, setYear] = useState(today.getFullYear());
-  const [month, setMonth] = useState(today.getMonth() + 1);
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  const [year, setYear] = useState(currentYear);
+  const [month, setMonth] = useState(currentMonth);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (year < currentYear || (year === currentYear && month < currentMonth)) {
+      return alert(`${year}年${month}月のコンテストはもう終了しています`);
+    }
 
     axios
       .get(`${baseUrl}?contest_year_month=${year}-${month}`)
