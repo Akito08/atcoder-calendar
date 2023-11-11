@@ -30,7 +30,7 @@ export default function App() {
       <div>
         {session ? (
           <>
-            <Logo />
+            <Logo googleSignOut={googleSignOut} />
             <Search setEventList={setEventList} />
             <EventList
               eventList={eventList}
