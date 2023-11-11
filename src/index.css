@@ -64,7 +64,7 @@ select {
 
 .add-calendar-button {
   position: fixed;
-  bottom: 9%;
+  bottom: 7%;
   right: 12%;
   font-weight: bold;
   font-size: 18px;
@@ -73,7 +73,7 @@ select {
 
 .sign-out-button {
   position: fixed;
-  bottom: 9%;
+  bottom: 7%;
   right: 1%;
   font-weight: bold;
   font-size: 18px;
