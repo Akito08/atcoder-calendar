@@ -13,7 +13,7 @@ export default function App() {
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { scopes: "https://www.googleapis.com/auth/calendar" },
+      options: { scopes: process.env.REACT_APP_GOOGLE_API_SCOPES },
     });
     if (error) {
       alert("Error logging in to Google provider");

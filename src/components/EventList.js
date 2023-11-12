@@ -28,16 +28,13 @@ export default function EventList({
           timeZone: "Asia/Tokyo",
         },
       };
-      await fetch(
-        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
-        {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + session.provider_token,
-          },
-          body: JSON.stringify(addEvent),
-        }
-      )
+      await fetch(process.env.REACT_APP_GOOGLE_CALENDAR_API, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + session.provider_token,
+        },
+        body: JSON.stringify(addEvent),
+      })
         .then((data) => {
           return data.json();
         })
