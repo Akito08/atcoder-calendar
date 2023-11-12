@@ -6,6 +6,8 @@ export default function EventList({
   session,
   googleSignOut,
 }) {
+  const timeZone = "Asia/Tokyo";
+
   function handleToggleEvent(id) {
     setEventList((eventList) =>
       eventList.map((event) =>
@@ -21,11 +23,11 @@ export default function EventList({
         summary: event.contest_name,
         start: {
           dateTime: event.contest_start_time,
-          timeZone: "Asia/Tokyo",
+          timeZone: timeZone,
         },
         end: {
           dateTime: event.contest_end_time,
-          timeZone: "Asia/Tokyo",
+          timeZone: timeZone,
         },
       };
       await fetch(process.env.REACT_APP_GOOGLE_CALENDAR_API, {
