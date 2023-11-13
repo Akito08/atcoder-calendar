@@ -50,7 +50,7 @@ export default function Event({ event, onToggleEvent }) {
     <li>
       <input
         type="checkbox"
-        value={event.checked}
+        checked={event.checked}
         onChange={() => onToggleEvent(event.id)}
       />
       <span> </span>

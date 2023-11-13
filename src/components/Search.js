@@ -22,6 +22,7 @@ export default function Search({ setEventList }) {
         const eventsWithId = res.data.map((event) => ({
           ...event,
           id: `${event.contest_name}-${event.contest_start_time}`,
+          checked: false,
         }));
         if (eventsWithId.length === 0) {
           return alert(

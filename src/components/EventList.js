@@ -7,8 +7,6 @@ export default function EventList({
   session,
   googleSignOut,
 }) {
-  const timeZone = "Asia/Tokyo";
-
   function handleToggleEvent(id) {
     setEventList((eventList) =>
       eventList.map((event) =>
@@ -18,6 +16,7 @@ export default function EventList({
   }
 
   async function createCalenderEvent() {
+    const timeZone = "Asia/Tokyo";
     const config = {
       headers: { Authorization: "Bearer " + session.provider_token },
     };
@@ -48,6 +47,11 @@ export default function EventList({
       }
     }
     alert("Google Calendarに選択された予定が追加されました");
+    setEventList(
+      eventList.map((event) => {
+        return event.checked ? { ...event, checked: false } : event;
+      })
+    );
   }
 
   return (
