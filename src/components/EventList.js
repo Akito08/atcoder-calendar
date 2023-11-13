@@ -1,4 +1,5 @@
 import Event from "./Event";
+import axios from "axios";
 
 export default function EventList({
   eventList,
@@ -17,6 +18,10 @@ export default function EventList({
   }
 
   async function createCalenderEvent() {
+    const config = {
+      headers: { Authorization: "Bearer " + session.provider_token },
+    };
+
     const checkedEvents = eventList.filter((event) => event.checked);
     for (const event of checkedEvents) {
       const addEvent = {
@@ -30,19 +35,17 @@ export default function EventList({
           timeZone: timeZone,
         },
       };
-      await fetch(process.env.REACT_APP_GOOGLE_CALENDAR_API, {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + session.provider_token,
-        },
-        body: JSON.stringify(addEvent),
-      })
-        .then((data) => {
-          return data.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });
+
+      try {
+        const response = await axios.post(
+          process.env.REACT_APP_GOOGLE_CALENDAR_API,
+          addEvent,
+          config
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error adding event to Google Calendar:", error);
+      }
     }
     alert("Google Calendarに選択された予定が追加されました");
   }
