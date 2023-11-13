@@ -16,24 +16,26 @@ export default function Search({ setEventList }) {
       return alert(`${year}年${month}月のコンテストはもう終了しています`);
     }
 
-    axios
-      .get(`${baseUrl}?contest_year_month=${year}-${month}`)
-      .then((res) => {
-        const eventsWithId = res.data.map((event) => ({
-          ...event,
-          id: `${event.contest_name}-${event.contest_start_time}`,
-          checked: false,
-        }));
-        if (eventsWithId.length === 0) {
-          return alert(
-            `AtCoderの公式サイトで、${year}年${month}月のコンテストの予定はまだ追加されていません。`
-          );
-        }
-        setEventList(eventsWithId);
-      })
-      .catch((error) => {
-        console.error("ERROR", error);
-      });
+    try {
+      const response = await axios.get(
+        `${baseUrl}?contest_year_month=${year}-${month}`
+      );
+      const eventsWithId = response.data.map((event) => ({
+        ...event,
+        id: `${event.contest_name}-${event.contest_start_time}`,
+        checked: false,
+      }));
+
+      if (eventsWithId.length === 0) {
+        return alert(
+          `AtCoderの公式サイトで、${year}年${month}月のコンテストの予定はまだ追加されていません。`
+        );
+      }
+
+      setEventList(eventsWithId);
+    } catch (error) {
+      console.error("ERROR", error);
+    }
   }
 
   return (
