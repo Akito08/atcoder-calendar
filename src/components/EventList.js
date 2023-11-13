@@ -15,7 +15,7 @@ export default function EventList({
     );
   }
 
-  async function createCalenderEvent() {
+  async function createCalendarEvent() {
     const timeZone = "Asia/Tokyo";
     const config = {
       headers: { Authorization: "Bearer " + session.provider_token },
@@ -67,7 +67,7 @@ export default function EventList({
       </ul>
       <button
         className="add-calendar-button"
-        onClick={() => createCalenderEvent()}
+        onClick={() => createCalendarEvent()}
       >
         Google Calendarに予定を追加
       </button>

@@ -9,7 +9,7 @@ export default function Search({ setEventList }) {
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (year < currentYear || (year === currentYear && month < currentMonth)) {
