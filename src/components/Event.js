@@ -54,14 +54,14 @@ export default function Event({ event, onToggleEvent }) {
         onChange={() => onToggleEvent(event.id)}
       />
       <span> </span>
-      <span>
+      <span className="event">
         {fixContestTime(
           event.contest_start_time,
           event.contest_end_time,
           event.contest_category
         )}
       </span>
-      <span> {event.contest_name}</span>
+      <span className="event-name"> {event.contest_name}</span>
     </li>
   );
 }

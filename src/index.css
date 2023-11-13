@@ -71,6 +71,14 @@ select {
   text-align: center;
 }
 
+.event-datetime {
+  font-family: inherit;
+}
+
+.event-name {
+  font-family: inherit;
+}
+
 .sign-out-button {
   position: fixed;
   bottom: 7%;
