@@ -41,7 +41,9 @@ export default function App() {
             <Footer />
           </>
         ) : (
-          <button onClick={googleSignIn}>Sign In With Google</button>
+          <button className="sign-in-button" onClick={googleSignIn}>
+            Sign In With Google
+          </button>
         )}
       </div>
     </div>

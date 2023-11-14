@@ -79,6 +79,12 @@ select {
   font-family: inherit;
 }
 
+.sign-in-button {
+  margin: 30px auto;
+  position: fixed;
+  left: 40%;
+  text-align: center;
+}
 .sign-out-button {
   position: fixed;
   bottom: 7%;
